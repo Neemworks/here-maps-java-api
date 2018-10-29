@@ -3,6 +3,7 @@ package com.nimworks.here.api;
 import java.util.Map;
 
 import com.nimworks.here.HereContext;
+import com.nimworks.here.model.AutoSuggestionResponse;
 import com.nimworks.here.model.PlaceSuggestionResponse;
 
 public class PlacesApi extends HereApi {
@@ -17,6 +18,14 @@ public class PlacesApi extends HereApi {
 		baseUrl += "?at="+ at + "&q=" + title;
 		Map<String, Object> headers = getHeaders();
 		return ctx.getHandler().handleGet(baseUrl, PlaceSuggestionResponse.class, headers);
+	}
+	
+	public AutoSuggestionResponse autoSuggest(String title, String at) {
+		
+		String baseUrl = getURL("autosuggest");
+		baseUrl += "?at="+ at + "&q=" + title;
+		Map<String, Object> headers = getHeaders();
+		return ctx.getHandler().handleGet(baseUrl, AutoSuggestionResponse.class, headers);
 	}
 
 }
