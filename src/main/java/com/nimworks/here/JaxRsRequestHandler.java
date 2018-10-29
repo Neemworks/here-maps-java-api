@@ -24,6 +24,7 @@ public class JaxRsRequestHandler implements RequestHandler {
 		for (Entry<String, Object> header : headers.entrySet()) {
 			headerMap.add(header.getKey(), header.getValue());
 		}
+		
 		T response = client.target(url)
 				.request()
 				.headers(headerMap)
